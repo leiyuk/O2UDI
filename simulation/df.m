@@ -1,0 +1,30 @@
+function dy = df(t,xx,s_m)
+%xyz惯性坐标系，直接积分
+miu=398600e9;
+J2=1.083e-3;
+Re=6378000;
+x=xx(1);
+y=xx(2);
+z=xx(3);
+vx=xx(4);
+vy=xx(5);
+vz=xx(6);
+r=sqrt(x^2+y^2+z^2);
+dy(1:3)=[vx;
+    vy;
+    vz;];
+%中心引力带来的加速度
+dy1=[-miu/r^3*x;
+    -miu/r^3*y;
+    -miu/r^3*z];
+%大气阻力,CD=2.2
+CD=2.2;
+dy2=-0.5*CD*s_m*midu(x,y,z,t)*([vx;vy;vz]-cross(2*pi/(23*3600+56*60+4)*[0;0;1],[x;y;z]))*norm([vx;vy;vz]-cross(2*pi/(23*3600+56*60+4)*[0;0;1],[x;y;z]));
+%J2摄动
+dy3=[-miu/r^3*3*J2/2*(Re/r)^2*(1-5*z^2/r^2)*x;
+    -miu/r^3*3*J2/2*(Re/r)^2*(1-5*z^2/r^2)*y;
+    -miu/r^3*3*J2/2*(Re/r)^2*(3-5*z^2/r^2)*z];
+dy(4:6)=dy1+dy2+dy3;
+dy=dy.';
+end
+
