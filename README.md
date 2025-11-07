@@ -10,7 +10,10 @@
 This code runs based on **MATLAB 2022b**. Ensure that you have this version installed on your system.
 
 1. **Clone the repository**:
-   - To ensure stable downloading even with an unstable network connection, you can directly go to the URL **[https://github.com/leiyuk/O2UDI](https://github.com/leiyuk/O2UDI)**, click **'Download ZIP'**, and then unzip the file.
+    ```bash
+    git clone git@github.com:leiyuk/O2UDI.git
+    ```
+   - If you are unable to successfully clone the repository using the previous code due to poor network conditions or other issues, you can directly go to the URL **[https://github.com/leiyuk/O2UDI](https://github.com/leiyuk/O2UDI)**, click **'Download ZIP'**, and then unzip the file.
 2. **Navigate to the project folder**:
     - Open MATLAB on your computer.
     - In MATLAB, navigate to the folder where the O2UDI project is located.
