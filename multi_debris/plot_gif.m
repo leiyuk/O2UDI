@@ -26,7 +26,7 @@ while 1
     plot(latter_tuiyan(1,:,pic_num), latter_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 0.5);hold off;
     ylabel('orbital radius (km)');  % 设置y轴标签
     xlabel('probability density');  % 设置x轴标签
-    legend('reference distribution', 'inferred distribution','Location','northeast');  % 添加图例
+    legend('true distribution', 'inferred distribution','Location','northeast');  % 添加图例
     title({['evolution time: ', num2str(round(pic_num)), ' day']; ...
            ['JS divergence: ', num2str(JS_sandu(pic_num), '%.4f')]});  % 设置标题
     set(gca, 'FontSize', 20);  % 设置坐标轴字体大小
