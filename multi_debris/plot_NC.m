@@ -57,12 +57,12 @@ for k = 1:3
     plot(latter_real(1,:,pic_num), latter_real(2,:,pic_num), 'green', 'LineWidth', 0.5); hold on;
     plot(latter_tuiyan(1,:,pic_num), latter_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 0.5); hold off;
 
-    ylabel('orbital radius (km)');
-    xlabel('probability density');
-    legend('true distribution','inferred distribution','Location','northeast');
+    ylabel('Orbital radius (km)');
+    xlabel('Probability density');
+    legend('True distribution','Inferred distribution','Location','northeast');
 
     % 标题：进化时间 + JS散度
-    title(['evolution time: ', num2str(round(pic_num)), ' day']);
+    title(['Time: ', get_target_date(pic_num)]);
 
     set(ax,'FontSize',10,'LineWidth',1);
 
@@ -83,12 +83,12 @@ for k = 1:3
     plot(latter_real(1,:,pic_num), latter_real(2,:,pic_num), 'green', 'LineWidth', 0.5); hold on;
     plot(movmean(latter_tuiyan(1,:,pic_num),10), latter_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 0.5); hold off;
 
-    ylabel('orbital radius (km)');
-    xlabel('probability density');
-    legend('true distribution','smoothed inferred distribution','Location','northeast');
+    ylabel('Orbital radius (km)');
+    xlabel('Probability density');
+    legend('True distribution','Smoothed inferred distribution','Location','northeast');
 
     % 标题：进化时间 + JS散度
-    title(['evolution time: ', num2str(round(pic_num)), ' day']);
+    title(['Time: ', get_target_date(pic_num)]);
 
     set(ax,'FontSize',10,'LineWidth',1);
 
@@ -108,9 +108,9 @@ ax4 = nexttile(7,[1 3]);
 t_days = 1:DAY;
 plot(t_days, JS_sandu,'Color', [0, 82, 155]/255, 'LineWidth', 1); hold on;
 plot(t_days, JS_sandu_smooth,'Color', [230, 90, 13]/255, 'LineWidth', 1); hold on;
-xlabel('evolution time (day)');
+xlabel('Time elapsed since 2009-04-20 (day)');
 ylabel('JS divergence');
-legend('before smoothing','after smoothing','Location','southeast');
+legend('Before smoothing','After smoothing','Location','southeast');
 ylim([0 0.07]);
 set(ax4,'FontSize',15,'LineWidth',1);
 

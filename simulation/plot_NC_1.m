@@ -45,7 +45,7 @@ tl=figure('Color','w','Position',[50 50 1200 1000],'WindowStyle','normal');
 
 t_days = (0:ns)*Ts/86400;
 plot(t_days, JS_sandu,'Color', [0, 82, 155]/255, 'LineWidth', 1); 
-xlabel('evolution time (day)');
+xlabel('Evolution time (day)');
 ylabel('JS divergence');
 ylim([0 0.05]);
 % 设置所有坐标轴的默认字体大小

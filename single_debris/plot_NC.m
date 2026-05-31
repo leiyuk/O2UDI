@@ -40,7 +40,7 @@ for k = 1:9
     'Margin',6, ...              % 内边距，单位像素
     'Clipping','on');            % 防止越界被裁掉
 
-    xlabel('$B^*\;(\mathrm{earth\ radius})^{-1}$', 'Interpreter', 'latex');
+    xlabel('$B^*\;(\mathrm{Earth\ Radii}^{-1})$', 'Interpreter', 'latex');
     ylabel('$\frac{\Delta a}{\Delta T}\;(\mathrm{km}/\mathrm{s})$', 'Interpreter', 'latex');
 
     xlim([0 1.05*max(pointxy_record{nums(k)}(1,:))]);  % 将X轴下限设为0，上限自动

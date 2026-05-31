@@ -89,8 +89,8 @@ for k = 1:4
     colorbar;
     colormap(viridis);
     clim([0, max_density]); % 统一颜色范围
-    xlabel('semi-major axis (km)');
-    ylabel('eccentricity');
+    xlabel('Semi-major axis (km)');
+    ylabel('Eccentricity');
     
     set(ax,'FontSize',10,'LineWidth',1);
     axis([6.6e3 7.8e3 0 0.1]);
@@ -98,7 +98,7 @@ for k = 1:4
     text(ax, -0.13, 1.15, labels{2*k-1}, 'Units','normalized', ...
          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
          'FontName','Times New Roman','FontSize',15,'FontWeight','bold');
-    subtitle(ax,['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day'],"FontSize",15);
+    subtitle(ax,['Evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day'],"FontSize",15);
     % 推演值
     ax = nexttile(2*k);
 %     x_plot = Y(1,1:num_tuiyan)'; % 转置为列向量
@@ -114,8 +114,8 @@ for k = 1:4
 %     colorbar;
     colormap(viridis);
     clim([0, max_density]); % 统一颜色范围
-    xlabel('semi-major axis (km)');
-    ylabel('eccentricity');
+    xlabel('Semi-major axis (km)');
+    ylabel('Eccentricity');
 %     subtitle(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
     set(ax,'FontSize',10,'LineWidth',1);
     axis([6.6e3 7.8e3 0 0.1]);
@@ -123,15 +123,15 @@ for k = 1:4
     text(ax, -0.13, 1.15, labels{2*k}, 'Units','normalized', ...
          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
          'FontName','Times New Roman','FontSize',15,'FontWeight','bold');
-    subtitle(ax,['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day'],"FontSize",15);
+    subtitle(ax,['Evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day'],"FontSize",15);
 
 end
 
 ax = nexttile(1);
-title("reference value","FontSize",25)
+title("Reference value","FontSize",25)
 
 ax = nexttile(2);
-title("inferred value","FontSize",25)
+title("Inferred value","FontSize",25)
 
 drawnow;  % 刷新图像
 

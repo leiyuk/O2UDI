@@ -97,8 +97,8 @@ for k = 1:4
 %     colorbar;
     colormap(viridis);
     clim([0, max_density]); % 统一颜色范围
-    xlabel('orbital period (min)');
-    ylabel('apogee altitude (km)');
+    xlabel('Orbital period (minutes)');
+    ylabel('Apogee altitude (km)');
 %     subtitle(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
     set(ax_left,'FontSize',8,'LineWidth',1);
     axis([90 120 400 1500]);
@@ -115,8 +115,8 @@ for k = 1:4
     colorbar;
     colormap(viridis);
     clim([0, max_density]); % 统一颜色范围
-    xlabel('orbital period (min)');
-    ylabel('perigee altitude (km)');
+    xlabel('Orbital period (minutes)');
+    ylabel('Perigee altitude (km)');
 %     subtitle(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
     set(ax_right,'FontSize',8,'LineWidth',1);
     axis([90 120 400 800]);
@@ -124,7 +124,7 @@ for k = 1:4
     text(ax, -0.1, 1.15, labels{2*k-1}, 'Units','normalized', ...
          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
          'FontName','Times New Roman','FontSize',15,'FontWeight','bold');
-    subtitle(ax,['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day'],"FontSize",15)
+    subtitle(ax,['Evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day'],"FontSize",15)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -149,8 +149,8 @@ for k = 1:4
 %     colorbar;
     colormap(viridis);
     clim([0, max_density]); % 统一颜色范围
-    xlabel('orbital period (min)');
-    ylabel('apogee altitude (km)');
+    xlabel('Orbital period (minutes)');
+    ylabel('Apogee altitude (km)');
 %     subtitle(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
     set(ax_left,'FontSize',8,'LineWidth',1);
     axis([90 120 400 1500]);
@@ -167,8 +167,8 @@ for k = 1:4
 %     colorbar;
     colormap(viridis);
     clim([0, max_density]); % 统一颜色范围
-    xlabel('orbital period (min)');
-    ylabel('perigee altitude (km)');
+    xlabel('Orbital period (minutes)');
+    ylabel('Perigee altitude (km)');
 %     subtitle(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
     set(ax_right,'FontSize',8,'LineWidth',1);
     axis([90 120 400 800]);
@@ -176,7 +176,7 @@ for k = 1:4
     text(ax, -0.1, 1.15, labels{2*k}, 'Units','normalized', ...
          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
          'FontName','Times New Roman','FontSize',15,'FontWeight','bold');
-    subtitle(ax,['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day'],"FontSize",15)
+    subtitle(ax,['Evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day'],"FontSize",15)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -186,10 +186,10 @@ end
 
 
 ax = nexttile(tl,1);
-title("reference value","FontSize",25)
+title("Reference value","FontSize",25)
 
 ax = nexttile(tl,2);
-title("inferred value","FontSize",25)
+title("Inferred value","FontSize",25)
 
 drawnow;  % 刷新图像
 

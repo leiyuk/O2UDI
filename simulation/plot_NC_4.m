@@ -56,12 +56,12 @@ for k = 1:3
     plot(xiao_cankao(1,:,pic_num), xiao_cankao(2,:,pic_num), 'green', 'LineWidth', 0.5); hold on;
     plot(xiao_tuiyan(1,:,pic_num), xiao_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 0.5); hold off;
 
-    ylabel('orbital radius (km)');
-    xlabel('probability density');
-    legend('reference distribution','inferred distribution','Location','northeast');
+    ylabel('Orbital radius (km)');
+    xlabel('Probability density');
+    legend('Reference distribution','Inferred distribution','Location','northeast');
 
     % 标题：进化时间 + JS散度
-    title(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
+    title(['Evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
 
     set(ax,'FontSize',10,'LineWidth',1);
 
@@ -82,7 +82,7 @@ end
 ax4 = nexttile(4,[1 3]);
 t_days = (0:ns)*Ts/86400;
 plot(t_days, JS_sandu,'Color', [0, 82, 155]/255, 'LineWidth', 1);
-xlabel('evolution time (day)');
+xlabel('Evolution time (day)');
 ylabel('JS divergence');
 ylim([0 0.05]);
 set(ax4,'FontSize',15,'LineWidth',1);
