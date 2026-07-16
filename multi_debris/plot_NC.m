@@ -1,7 +1,8 @@
-
+% load('true_10_year.mat');
 KL_sanduPQ=zeros(1,DAY);
 KL_sanduQP=zeros(1,DAY);
 JS_sandu_smooth=zeros(1,DAY);
+
 
 %计算JS散度
 for i=1:DAY
@@ -108,7 +109,7 @@ ax4 = nexttile(7,[1 3]);
 t_days = 1:DAY;
 plot(t_days, JS_sandu,'Color', [0, 82, 155]/255, 'LineWidth', 1); hold on;
 plot(t_days, JS_sandu_smooth,'Color', [230, 90, 13]/255, 'LineWidth', 1); hold on;
-xlabel('Time elapsed since 2009-04-20 (day)');
+xlabel('Time elapsed since 2009-05-10 (day)');
 ylabel('JS divergence');
 legend('Before smoothing','After smoothing','Location','southeast');
 ylim([0 0.07]);

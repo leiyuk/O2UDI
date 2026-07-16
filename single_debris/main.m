@@ -22,7 +22,7 @@ pointxy_record={};
 linexy_record={};
 
 
-num=100;
+num=653;
 for i=1:num
 
     [R2,all,use,pointxy,linexy]=SingleDebris('cosmos_1408/',subFolders{i},...
@@ -55,6 +55,14 @@ for i=1:num
     x2=x2+use_record{i};
 end
 disp(['num of data average: ',num2str(x2/num)])
+
+cal=0;
+for i=1:num
+    if linexy_record{i}(2,end)>linexy_record{i}(2,1)
+        cal=cal+1;
+    end
+end
+disp(['ratio of positive slope: ',num2str(cal/num)])
 
 plot_NC;
 

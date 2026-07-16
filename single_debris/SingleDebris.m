@@ -209,6 +209,7 @@ Zy = abs((y - mean(y,'omitnan')) ./ std(y,'omitnan'));
 mask = (Zx <= 3) & (Zy <= 3);     % 3σ 规则，阈值可调成 2.5 或 2
 % disp(length(mask))
 % disp(sum(mask))
+% mask=true(length(Zx),1);
 B_mean = x(mask); a_delta_t_N = y(mask).';
 all=length(mask);
 use=sum(mask);

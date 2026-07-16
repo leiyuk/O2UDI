@@ -12,7 +12,7 @@ figure('Color','w','Position',[50 50 1200 1000],'WindowStyle','normal');
 tl = tiledlayout(3,3,'Padding','compact','TileSpacing','compact');
 
 labels = {'a','b','c','d','e','f','g','h','i'};  % 子图标签（无括号）
-nums = randperm(100, 9);
+nums = randperm(653, 9);
 
 % ===== 上排三张子图：三个时间快照 =====
 for k = 1:9

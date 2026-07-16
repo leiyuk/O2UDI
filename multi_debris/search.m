@@ -7,7 +7,7 @@ function [day,num] = search(real,a,e,w)
 N=max_day*max_num; %数据的总个数
 % chushai=ceil(0.02*N);  %0.05可以调节
 % disp(chushai)
-chushai=10;
+chushai=20;
 
 cs=zeros(6,chushai);
 mm=1;

@@ -5,8 +5,8 @@ clear;
 
 %使用的基本参数
 year0=2009;%推演的第1天的年份
-day0=110;%数据第1天在该年的天数
-t0=110;%推演的第1天的时间
+day0=130;%数据第1天在该年的天数
+t0=130;%推演的第1天的时间
 
 miu_earth=398600e9;
 h0=790e3;%碰撞高度约为790km
@@ -213,7 +213,7 @@ parfor i=1:small
         if(t_latter_tuiyan>DAY)
             break;
         end
-        t1_jz=round(max(1,t_latter_tuiyan-30));
+        t1_jz=round(max(1,t_latter_tuiyan-10));
         t2_jz=t_latter_tuiyan-1;
         %t2_jz_no=erfen(t_da_caiyang,1,t_da_caiyang_lie,t2_jz);
         %t1_jz_no=erfen(t_da_caiyang,1,t2_jz_no,t1_jz);
@@ -228,16 +228,16 @@ parfor i=1:small
 %         end
 
         v(1)=u(1)+(real(1,day+k,num)-real(1,day,num))/(real(5,day+k,num)-real(5,day,num)+1e-10)...
-            /real(4,day,num)*real(4,day,big+i)...
+            /SM(num)*SM(big+i)...
             *(real(5,t_latter_tuiyan,big+i)-real(5,t_latter_tuiyan-1,big+i));
         %a
         v(2)=u(2)+(real(2,day+k,num)-real(2,day,num))/(real(5,day+k,num)-real(5,day,num)+1e-10)...
-            /real(4,day,num)*real(4,day,big+i)...
+            /SM(num)*SM(big+i)...
             *(real(5,t_latter_tuiyan,big+i)-real(5,t_latter_tuiyan-1,big+i));
         %e
      
         %v(3)=u(3)+3/4*1.083e-3*(6378e3/u(1)/(1-u(2))^2)^2*sqrt(miu_earth/u(1)^3)*(5*dot(cross(r0,v0)/norm(cross(r0,v0)),[0;0;1])^2-1)*2*pi*sqrt(u(1)^3/miu_earth);
-        v(3)=u(3)+3/4*1.083e-3*(6378e3/u(1)/(1-u(2))^2)^2*(5*cos(i0)^2-1)*2*pi;
+        v(3)=u(3)+3/4*1.083e-3*(6378e3/u(1)/(1-u(2))^2)^2*(5*cos(i0)^2-1)*sqrt(miu_earth/u(1)^3)*(real(5,t_latter_tuiyan,big+i)-real(5,t_latter_tuiyan-1,big+i));
         if(v(2)<0)
             v(2)=0;
         else
