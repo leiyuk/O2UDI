@@ -48,22 +48,22 @@ tl = tiledlayout(3,3,'Padding','compact','TileSpacing','compact');
 
 snap_idx = [round(DAY/3),round(DAY/3*2),DAY];
 
-labels = {'a','b','c','d','e','f','g'};  % 子图标签（无括号）
+labels = {'A','B','C','D','E','F','G'};  % 子图标签（无括号）
 
 % ===== 上排三张子图：三个时间快照 =====
 for k = 1:3
     pic_num = snap_idx(k);
     ax = nexttile(k);
 
-    plot(latter_real(1,:,pic_num), latter_real(2,:,pic_num), 'green', 'LineWidth', 0.5); hold on;
-    plot(latter_tuiyan(1,:,pic_num), latter_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 0.5); hold off;
+    plot(latter_real(1,:,pic_num), latter_real(2,:,pic_num), 'green', 'LineWidth', 1); hold on;
+    plot(latter_tuiyan(1,:,pic_num), latter_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 1); hold off;
 
     ylabel('Orbital radius (km)');
-    xlabel('Probability density');
+    xlabel('Probability per bin');
     legend('True distribution','Inferred distribution','Location','northeast');
 
     % 标题：进化时间 + JS散度
-    title(['Time: ', get_target_date(pic_num)]);
+    title(['Date: ', get_target_date(pic_num)]);
 
     set(ax,'FontSize',10,'LineWidth',1);
 
@@ -73,7 +73,7 @@ for k = 1:3
 
     text(ax, -0.06, 1.12, labels{k}, 'Units','normalized', ...
          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
-         'FontName','Times New Roman','FontSize',20,'FontWeight','bold');
+         'FontName','Times New Roman','FontSize',15,'FontWeight','bold');
 
 end
 
@@ -81,15 +81,15 @@ for k = 1:3
     pic_num = snap_idx(k);
     ax = nexttile(k+3);
 
-    plot(latter_real(1,:,pic_num), latter_real(2,:,pic_num), 'green', 'LineWidth', 0.5); hold on;
-    plot(movmean(latter_tuiyan(1,:,pic_num),10), latter_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 0.5); hold off;
+    plot(latter_real(1,:,pic_num), latter_real(2,:,pic_num), 'green', 'LineWidth', 1); hold on;
+    plot(movmean(latter_tuiyan(1,:,pic_num),10), latter_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 1); hold off;
 
     ylabel('Orbital radius (km)');
-    xlabel('Probability density');
+    xlabel('Probability per bin');
     legend('True distribution','Smoothed inferred distribution','Location','northeast');
 
     % 标题：进化时间 + JS散度
-    title(['Time: ', get_target_date(pic_num)]);
+    title(['Date: ', get_target_date(pic_num)]);
 
     set(ax,'FontSize',10,'LineWidth',1);
 
@@ -99,7 +99,7 @@ for k = 1:3
 
     text(ax, -0.06, 1.12, labels{k+3}, 'Units','normalized', ...
          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
-         'FontName','Times New Roman','FontSize',20,'FontWeight','bold');
+         'FontName','Times New Roman','FontSize',15,'FontWeight','bold');
 
 end
 
@@ -109,21 +109,22 @@ ax4 = nexttile(7,[1 3]);
 t_days = 1:DAY;
 plot(t_days, JS_sandu,'Color', [0, 82, 155]/255, 'LineWidth', 1); hold on;
 plot(t_days, JS_sandu_smooth,'Color', [230, 90, 13]/255, 'LineWidth', 1); hold on;
-xlabel('Time elapsed since 2009-05-10 (day)');
+xlabel('Time elapsed since 2009-05-10 (days)');
 ylabel('JS divergence');
-legend('Before smoothing','After smoothing','Location','southeast');
+legend('Original inferred','Smoothed inferred','Location','southeast');
 ylim([0 0.07]);
-set(ax4,'FontSize',15,'LineWidth',1);
+set(ax4,'FontSize',12,'LineWidth',1);
 
 text(ax4, -0.02, 1.12, labels{7}, 'Units','normalized', ...
      'HorizontalAlignment','left', 'VerticalAlignment','top', ...
-     'FontName','Times New Roman','FontSize',20,'FontWeight','bold');
+     'FontName','Times New Roman','FontSize',15,'FontWeight','bold');
 
 
 
 
 % 输出平均JS
 disp(mean(JS_sandu_smooth));
+disp(mean(JS_sandu_smooth-JS_sandu))
 
 drawnow;  % 刷新图像
 

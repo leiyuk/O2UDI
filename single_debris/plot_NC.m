@@ -2,7 +2,7 @@
 
 
 
-rng(13);
+rng(3);
 % singlemain
 % clf;
 
@@ -11,8 +11,8 @@ set(groot, 'defaultAxesFontName', 'Times New Roman');
 figure('Color','w','Position',[50 50 1200 1000],'WindowStyle','normal');
 tl = tiledlayout(3,3,'Padding','compact','TileSpacing','compact');
 
-labels = {'a','b','c','d','e','f','g','h','i'};  % 子图标签（无括号）
-nums = randperm(653, 9);
+labels = {'A','B','C','D','E','F','G','H','I'};  % 子图标签（无括号）
+nums = randperm(length(linexy_record), 9);
 
 % ===== 上排三张子图：三个时间快照 =====
 for k = 1:9
@@ -29,19 +29,20 @@ for k = 1:9
     
 
     text(0.05, 0.9, sprintf('$R^2 = %.4f$', R2_record{nums(k)}), ...
-    'Units','normalized', ...
-    'Interpreter','latex', ...
-    'HorizontalAlignment','left', ...
-    'VerticalAlignment','top', ...
-    'FontSize',15, ...
-    'BackgroundColor','w', ...   % 白底
-    'EdgeColor','k', ...         % 黑色边框
-    'LineWidth',1, ...        % 边框线宽
-    'Margin',6, ...              % 内边距，单位像素
-    'Clipping','on');            % 防止越界被裁掉
+    'Units', 'normalized', ...
+    'Interpreter', 'latex', ...
+    'HorizontalAlignment', 'left', ...
+    'VerticalAlignment', 'top', ...
+    'FontSize', 12, ...
+    'BackgroundColor', 'w', ...
+    'EdgeColor', 'k', ...
+    'LineWidth', 0.6, ...
+    'Margin', 3, ...
+    'Clipping', 'on');
 
-    xlabel('$B^*\;(\mathrm{Earth\ Radii}^{-1})$', 'Interpreter', 'latex');
-    ylabel('$\frac{\Delta a}{\Delta T}\;(\mathrm{km}/\mathrm{s})$', 'Interpreter', 'latex');
+    xlabel('$B^*\;(R_{\mathrm{E}}^{-1})$', 'Interpreter', 'latex');
+    ylabel('$\frac{|\Delta a|}{\Delta t}\;(\mathrm{km/s})$', ...
+       'Interpreter', 'latex');
 
     xlim([0 1.05*max(pointxy_record{nums(k)}(1,:))]);  % 将X轴下限设为0，上限自动
     ylim([0 1.05*max(pointxy_record{nums(k)}(2,:))]);  % 将Y轴下限设为0，上限自动
@@ -53,7 +54,7 @@ for k = 1:9
 
     text(ax, -0.1, 1.12, labels{k}, 'Units','normalized', ...
          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
-         'FontName','Times New Roman','FontSize',20,'FontWeight','bold');
+         'FontName','Times New Roman','FontSize',15,'FontWeight','bold');
     
 end
 

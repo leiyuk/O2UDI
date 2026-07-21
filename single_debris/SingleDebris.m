@@ -95,9 +95,9 @@ for i=1:satlitNum
     X(7,i)=a;    %将半长轴存入矩阵的第七行
 end
 satlitNum=i-1;
-if dt<dt_use
-    disp(["error!",fileName]);
-end
+% if dt<dt_use
+%     disp(["error!",fileName]);
+% end
 
 i=1;
 while i<satlitNum

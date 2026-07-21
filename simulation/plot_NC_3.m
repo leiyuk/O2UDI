@@ -9,7 +9,7 @@ R=6378e3;
 snap_idx = 1:ns/4:ns+1;   % [1, 1+ns/3, 1+2ns/3, ns+1]
 snap_idx = snap_idx(2:5); % 只取后三个
 
-labels = {'a','b','c','d','e','f','g','h'};  % 子图标签（无括号）
+labels = {'A','B','C','D','E','F','G','H'};  % 子图标签（无括号）
 
 % ===== 上排三张子图：三个时间快照 =====
 for k = 1:4
@@ -97,10 +97,13 @@ for k = 1:4
 %     colorbar;
     colormap(viridis);
     clim([0, max_density]); % 统一颜色范围
-    xlabel('Orbital period (minutes)');
-    ylabel('Apogee altitude (km)');
+    if k==4     xlabel('Orbital period (minutes)');     end
+    ylabel('Altitude (km)');
+    if k==1
+    title(ax_left, 'Apogee', 'FontSize', 10);
+    end
 %     subtitle(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
-    set(ax_left,'FontSize',8,'LineWidth',1);
+    set(ax_left,'FontSize',10,'LineWidth',1);
     axis([90 120 400 1500]);
 
     ax_right = nexttile(tl_child,2);
@@ -112,19 +115,24 @@ for k = 1:4
     % --- 绘图 ---
     % 此时 x_plot, y_plot, f 均为 num_true x 1，维度完全匹配
     scatter(ax_right,x_plot, y_plot, 2, f, 'filled'); 
-    colorbar;
+    cb = colorbar(ax_right); % 每一行四张子图共用该颜色范围，colorbar 保持在中间
+    cb.FontName = 'Times New Roman';
+    cb.FontSize = 8;
     colormap(viridis);
     clim([0, max_density]); % 统一颜色范围
-    xlabel('Orbital period (minutes)');
-    ylabel('Perigee altitude (km)');
+    if k==4     xlabel('Orbital period (minutes)');     end
+%     ylabel('Altitude (km)');
+    if k==1
+    title(ax_right, 'Perigee', 'FontSize', 10);
+    end
 %     subtitle(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
-    set(ax_right,'FontSize',8,'LineWidth',1);
+    set(ax_right,'FontSize',10,'LineWidth',1);
     axis([90 120 400 800]);
 
-    text(ax, -0.1, 1.15, labels{2*k-1}, 'Units','normalized', ...
+    text(ax, -0.075,1.3, labels{2*k-1}, 'Units','normalized', ...
          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
-         'FontName','Times New Roman','FontSize',15,'FontWeight','bold');
-    subtitle(ax,['Evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day'],"FontSize",15)
+         'FontName','Times New Roman','FontSize',12,'FontWeight','bold');
+    subtitle(ax,['$t = $', num2str(round((pic_num-1)*Ts/86400)), ' days'],"FontSize",10,'Interpreter', 'latex');
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -149,10 +157,15 @@ for k = 1:4
 %     colorbar;
     colormap(viridis);
     clim([0, max_density]); % 统一颜色范围
-    xlabel('Orbital period (minutes)');
-    ylabel('Apogee altitude (km)');
+
+    if k==4     xlabel('Orbital period (minutes)');     end
+
+%     ylabel('Altitude (km)');
+    if k==1
+    title(ax_left, 'Apogee', 'FontSize', 10);
+    end
 %     subtitle(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
-    set(ax_left,'FontSize',8,'LineWidth',1);
+    set(ax_left,'FontSize',10,'LineWidth',1);
     axis([90 120 400 1500]);
 
     ax_right = nexttile(tl_child,2);
@@ -167,16 +180,19 @@ for k = 1:4
 %     colorbar;
     colormap(viridis);
     clim([0, max_density]); % 统一颜色范围
-    xlabel('Orbital period (minutes)');
-    ylabel('Perigee altitude (km)');
+    if k==4     xlabel('Orbital period (minutes)');     end
+%     ylabel('Altitude (km)');
+    if k==1
+    title(ax_right, 'Perigee', 'FontSize', 10);
+    end
 %     subtitle(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
-    set(ax_right,'FontSize',8,'LineWidth',1);
+    set(ax_right,'FontSize',10,'LineWidth',1);
     axis([90 120 400 800]);
 
-    text(ax, -0.1, 1.15, labels{2*k}, 'Units','normalized', ...
+    text(ax, -0.075,1.3, labels{2*k}, 'Units','normalized', ...
          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
-         'FontName','Times New Roman','FontSize',15,'FontWeight','bold');
-    subtitle(ax,['Evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day'],"FontSize",15)
+         'FontName','Times New Roman','FontSize',12,'FontWeight','bold');
+    subtitle(ax,['$t = $', num2str(round((pic_num-1)*Ts/86400)), ' days'],"FontSize",10,'Interpreter', 'latex');
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -186,10 +202,10 @@ end
 
 
 ax = nexttile(tl,1);
-title("Reference value","FontSize",25)
+title("Reference population","FontSize",14)
 
 ax = nexttile(tl,2);
-title("Inferred value","FontSize",25)
+title("Inferred population","FontSize",14)
 
 drawnow;  % 刷新图像
 

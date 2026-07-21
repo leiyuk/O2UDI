@@ -46,22 +46,22 @@ tl = tiledlayout(2,3,'Padding','compact','TileSpacing','compact');
 snap_idx = 1:ns/3:ns+1;   % [1, 1+ns/3, 1+2ns/3, ns+1]
 snap_idx = snap_idx(2:4); % 只取后三个
 
-labels = {'a','b','c','d'};  % 子图标签（无括号）
+labels = {'A','B','C','D'};  % 子图标签（无括号）
 
 % ===== 上排三张子图：三个时间快照 =====
 for k = 1:3
     pic_num = snap_idx(k);
     ax = nexttile(k);
 
-    plot(xiao_cankao(1,:,pic_num), xiao_cankao(2,:,pic_num), 'green', 'LineWidth', 0.5); hold on;
-    plot(xiao_tuiyan(1,:,pic_num), xiao_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 0.5); hold off;
+    plot(xiao_cankao(1,:,pic_num), xiao_cankao(2,:,pic_num), 'green', 'LineWidth', 1); hold on;
+    plot(xiao_tuiyan(1,:,pic_num), xiao_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 1); hold off;
 
     ylabel('Orbital radius (km)');
-    xlabel('Probability density');
+    xlabel('Probability per bin');
     legend('Reference distribution','Inferred distribution','Location','northeast');
 
     % 标题：进化时间 + JS散度
-    title(['Evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']);
+    title(['$t = $', num2str(round((pic_num-1)*Ts/86400)), ' days'],'Interpreter', 'latex');
 
     set(ax,'FontSize',10,'LineWidth',1);
 
@@ -69,7 +69,7 @@ for k = 1:3
 
     axis([0 0.005 lo_fenbu/1e3  hi_fenbu/1e3]);
 
-    text(ax, -0.07, 1.12, labels{k}, 'Units','normalized', ...
+    text(ax, -0.08, 1.12, labels{k}, 'Units','normalized', ...
          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
          'FontName','Times New Roman','FontSize',20,'FontWeight','bold');
 
@@ -82,7 +82,7 @@ end
 ax4 = nexttile(4,[1 3]);
 t_days = (0:ns)*Ts/86400;
 plot(t_days, JS_sandu,'Color', [0, 82, 155]/255, 'LineWidth', 1);
-xlabel('Evolution time (day)');
+xlabel('Time (days)');
 ylabel('JS divergence');
 ylim([0 0.05]);
 set(ax4,'FontSize',15,'LineWidth',1);
