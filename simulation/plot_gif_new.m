@@ -59,14 +59,14 @@ while 1
     
 
     % 绘制数据，xiao_cankao为参考值，xiao_tuiyan为外推值
-    plot(xiao_cankao(1,:,pic_num), xiao_cankao(2,:,pic_num), 'green', 'LineWidth', 0.5);hold on;
-    plot(xiao_tuiyan(1,:,pic_num), xiao_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 0.5);hold off;
+    plot(xiao_cankao(1,:,pic_num), xiao_cankao(2,:,pic_num), 'green', 'LineWidth', 1);hold on;
+    plot(xiao_tuiyan(1,:,pic_num), xiao_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 1);hold off;
     ylabel('Orbital radius (km)');  % 设置y轴标签
-    xlabel('Probability density');  % 设置x轴标签
+    xlabel('Probability per bin');  % 设置x轴标签
     legend('Reference distribution', 'Inferred distribution');  % 添加图例
-    title({['Evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' day']; ...
-           ['JS divergence: ', num2str(JS_sandu(pic_num), '%.4f')]});  % 设置标题
-    set(gca, 'FontSize', 20);  % 设置坐标轴字体大小
+    title({['$t = $', num2str(round((pic_num-1)*Ts/86400)), ' day']; ...
+           ['JS divergence: ', num2str(JS_sandu(pic_num), '%.4f')]},'Interpreter', 'latex');  % 设置标题
+    set(gca, 'FontSize', 20,'LineWidth',1);  % 设置坐标轴字体大小
     
     % 设置坐标轴范围
     axis([0 0.01 lo_fenbu/1e3 hi_fenbu/1e3]);

@@ -22,14 +22,14 @@ while 1
 
     
     % 绘制数据，xiao_cankao为参考值，xiao_tuiyan为外推值
-    plot(latter_real(1,:,pic_num), latter_real(2,:,pic_num), 'green', 'LineWidth', 0.5);hold on;
-    plot(latter_tuiyan(1,:,pic_num), latter_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 0.5);hold off;
+    plot(latter_real(1,:,pic_num), latter_real(2,:,pic_num), 'green', 'LineWidth', 1);hold on;
+    plot(latter_tuiyan(1,:,pic_num), latter_tuiyan(2,:,pic_num), 'magenta', 'LineWidth', 1);hold off;
     ylabel('Orbital radius (km)');  % 设置y轴标签
-    xlabel('Probability density');  % 设置x轴标签
+    xlabel('Probability per bin');  % 设置x轴标签
     legend('True distribution', 'Inferred distribution','Location','northeast');  % 添加图例
-    title({['Time: ', get_target_date(pic_num)]; ...
+    title({['Date: ', get_target_date(pic_num)]; ...
            ['JS divergence: ', num2str(JS_sandu(pic_num), '%.4f')]});  % 设置标题
-    set(gca, 'FontSize', 20);  % 设置坐标轴字体大小
+    set(gca, 'FontSize', 20,'LineWidth',1);  % 设置坐标轴字体大小
     
     % 设置坐标轴范围
     axis([0 0.015 lo_fenbu/1e3 hi_fenbu/1e3]);
