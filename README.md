@@ -67,7 +67,7 @@ The project is divided into four main folders:
 
 
 ### Folder 3: `multi_debris`
-1. Open MATLAB and navigate to the `multi_debris` directory. Run the `main.m` file. The calculation takes about 10 minutes on an 8-core CPU computer, with most of the time spent reading the TLE data.  
+1. Open MATLAB and navigate to the `multi_debris` directory. Run the `main.m` file. The calculation takes about 20 minutes on an 8-core CPU computer, with most of the time spent reading the TLE data.  
 
 2. Run `plot_SC.m` and `plot_gif.m` to generate the figures and video.
 
