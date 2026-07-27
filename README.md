@@ -9,12 +9,8 @@
 
 This code runs based on **MATLAB 2022b**. Ensure that you have this version installed on your system.
 
-1. **Clone the repository**:
-    ```bash
-    git clone git@github.com:leiyuk/O2UDI.git
-    ```
-   - If you are unable to successfully clone the repository using the previous code due to poor network conditions or other issues, you can directly go to the URL **[https://github.com/leiyuk/O2UDI](https://github.com/leiyuk/O2UDI)**, click **'Download ZIP'**, and then unzip the file.
-2. **Navigate to the project folder**:
+
+1. **Navigate to the project folder**:
     - Open MATLAB on your computer.
     - In MATLAB, navigate to the folder where the O2UDI project is located.
 
@@ -47,10 +43,10 @@ The project is divided into four main folders:
 ### Folder 3: `multi_debris`
 - **Description**: Validates the O2UDI method using TLE data from the Cosmos 2251 breakup event. Corresponds to the fourth part of the Results section in the paper.
 - **Files**:
-    - `main.m`: The main program that, after reading 10 years of debris cloud data, infers the spatial distribution of small debris based on large-scale debris in the cloud, and compares it with the true distribution.
+    - `main.m`: The main program that, after reading 10 years of debris cloud data, infers the spatial distribution of smaller debris based on larger-scale debris in the cloud, and compares it with the true distribution.
     - `plot_SC.m`: This script generates plots comparing the true values with the inferred values of the distribution, as well as the calculated JS divergence.
     - `plot_gif.m`: This script outputs a video that dynamically shows the comparison between the true values and inferred values throughout the process.
-    - `cosmos_2251`: Contains TLE data of debris pieces generated from the Cosmos 2251 breakup.
+    - `cosmos_2251`: Contains TLE data of debris pieces generated from the Cosmos 2251 breakup. All debris data was obtained from the website [https://www.space-track.org/](https://www.space-track.org/).
     - Other files: Custom functions called during the execution of the program.
 
 ### Folder 4: `supple`
@@ -62,9 +58,7 @@ The project is divided into four main folders:
 ### Folder 1: `simulation`
 1. Open MATLAB and navigate to the `simulation` directory. Then, run the `main.m` file. Due to the large number of debris, the computation is slow. For example, using 76 cores of an Intel 8368 CPU, the calculation takes about 3 hours.  
 
-2. Considering the long execution time, a pre-computed result has already been saved in `.mat` format in the `data` folder.
-
-3. Run `plot_SC.m` and `plot_gif_new.m` to generate the figures and video.
+2. Run `plot_SC.m` and `plot_gif_new.m` to generate the figures and video.
 
 
 ### Folder 2: `single_debris`
