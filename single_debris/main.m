@@ -64,4 +64,4 @@ for i=1:num
 end
 disp(['ratio of positive slope: ',num2str(cal/num)])
 
-plot_NC;
+plot_SC;

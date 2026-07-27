@@ -471,4 +471,4 @@ save(filename, saveVars{:}, '-v7.3');
 
 delete(par);
 
-plot_NC;
+plot_SC;
