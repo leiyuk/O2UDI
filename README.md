@@ -62,7 +62,9 @@ The project is divided into four main folders:
 ### Folder 1: `simulation`
 1. Open MATLAB and navigate to the `simulation` directory. Then, run the `main.m` file. Due to the large number of debris, the computation is slow. For example, using 76 cores of an Intel 8368 CPU, the calculation takes about 3 hours.  
 
-2. Run `plot_SC.m` and `plot_gif_new.m` to generate the figures and video.
+2. Considering the long execution time, a pre-computed result has already been saved in `.mat` format in the `data` folder.
+
+3. Run `plot_SC.m` and `plot_gif_new.m` to generate the figures and video.
 
 
 ### Folder 2: `single_debris`
