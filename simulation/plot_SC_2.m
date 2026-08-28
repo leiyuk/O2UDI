@@ -9,7 +9,7 @@ R=6378e3;
 snap_idx = 1:ns/4:ns+1;   % [1, 1+ns/3, 1+2ns/3, ns+1]
 snap_idx = snap_idx(2:5); % 只取后三个
 
-labels = {'A','B','C','D','E','F','G','H'};  % 子图标签（无括号）
+% labels = {'A','B','C','D','E','F','G','H'};  % 子图标签（无括号）
 
 % ===== 上排三张子图：三个时间快照 =====
 for k = 1:4
@@ -96,12 +96,12 @@ for k = 1:4
 %     ylabel('Eccentricity');
     end
     ylabel('Eccentricity');
-    set(ax,'FontSize',10,'LineWidth',1);
+    set(ax,'FontSize',10,'LineWidth',1,'XGrid','on','YGrid','on','Box','on');
     axis([6.6e3 7.8e3 0 0.1]);
 
-    text(ax, -0.075,1.25, labels{2*k-1}, 'Units','normalized', ...
-         'HorizontalAlignment','left', 'VerticalAlignment','top', ...
-         'FontName','Times New Roman','FontSize',12,'FontWeight','bold');
+%     text(ax, -0.075,1.25, labels{2*k-1}, 'Units','normalized', ...
+%          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
+%          'FontName','Times New Roman','FontSize',12,'FontWeight','bold');
     subtitle(ax,['$t = $', num2str(round((pic_num-1)*Ts/86400)), ' days'],"FontSize",10,'Interpreter', 'latex');
     % 推演值
     ax = nexttile(2*k);
@@ -123,21 +123,21 @@ for k = 1:4
 %     ylabel('Eccentricity');
     end
 %     subtitle(['evolution time: ', num2str(round((pic_num-1)*Ts/86400)), ' days']);
-    set(ax,'FontSize',10,'LineWidth',1);
+    set(ax,'FontSize',10,'LineWidth',1,'XGrid','on','YGrid','on','Box','on');
     axis([6.6e3 7.8e3 0 0.1]);
 
-    text(ax, -0.075,1.25, labels{2*k}, 'Units','normalized', ...
-         'HorizontalAlignment','left', 'VerticalAlignment','top', ...
-         'FontName','Times New Roman','FontSize',12,'FontWeight','bold');
+%     text(ax, -0.075,1.25, labels{2*k}, 'Units','normalized', ...
+%          'HorizontalAlignment','left', 'VerticalAlignment','top', ...
+%          'FontName','Times New Roman','FontSize',12,'FontWeight','bold');
     subtitle(ax,['$t = $', num2str(round((pic_num-1)*Ts/86400)), ' days'],"FontSize",10,'Interpreter', 'latex');
 
 end
 
 ax = nexttile(1);
-title("Reference population","FontSize",14)
+title("(a) Reference population","FontSize",14)
 
 ax = nexttile(2);
-title("Inferred population","FontSize",14)
+title("(b) Inferred population","FontSize",14)
 
 drawnow;  % 刷新图像
 
