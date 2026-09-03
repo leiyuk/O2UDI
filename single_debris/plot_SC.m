@@ -41,7 +41,7 @@ for k = 1:9
     'Clipping', 'on');
 
     xlabel('$B^*\;(R_{\mathrm{E}}^{-1})$', 'Interpreter', 'latex');
-    ylabel('$\overline{\dot{a}}\;(\mathrm{km/s})$', ...
+    ylabel('$-\overline{\dot{a}}\;(\mathrm{km/s})$', ...
        'Interpreter', 'latex');
 
     xlim([0 1.05*max(pointxy_record{nums(k)}(1,:))]);  % 将X轴下限设为0，上限自动

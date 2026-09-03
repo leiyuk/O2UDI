@@ -71,7 +71,7 @@ for k = 1:3
 
     % 轴范围：第一个子图更宽，其余更窄（沿用你的逻辑）
 
-    axis([0 0.015 lo_fenbu/1e3 hi_fenbu/1e3]); 
+    axis([0 0.02 lo_fenbu/1e3 hi_fenbu/1e3]); 
 
 end
 
@@ -96,7 +96,7 @@ for k = 1:3
 
     % 轴范围：第一个子图更宽，其余更窄（沿用你的逻辑）
 
-    axis([0 0.015 lo_fenbu/1e3 hi_fenbu/1e3]); 
+    axis([0 0.02 lo_fenbu/1e3 hi_fenbu/1e3]); 
 
 end
 
@@ -119,7 +119,7 @@ bottom_pos = bottom_axes(2).Position;
 %     'FontName','Times New Roman','FontSize',15, ...
 %     'EdgeColor','none');
 
-outfile_dist = fullfile(pwd,'fig_simulation_radial_distribution.png');
+outfile_dist = fullfile(pwd,'fig_cosmos2251_radial_distribution.png');
 exportgraphics(fig_dist, outfile_dist, 'Resolution', 600, 'BackgroundColor','white');
 
 % ==== 第二张图：JS散度随时间变化 ====
@@ -146,7 +146,7 @@ disp(mean(JS_sandu_smooth-JS_sandu))
 
 drawnow;  % 刷新图像
 
-outfile_js = fullfile(pwd,'fig_simulation_js_divergence.png');
+outfile_js = fullfile(pwd,'fig_cosmos2251_js_divergence.png');
 exportgraphics(fig_js, outfile_js, 'Resolution', 600, 'BackgroundColor','white');
 
 

@@ -8,7 +8,7 @@ miu=398600; %单位km
 R=6378;%地球半径，单位Km
 
 % 指定读取的COSMOS碎片的两行根数的文件夹路径
-folderPath = '../multi_debris/cosmos_2251';
+folderPath = 'cosmos_2251';
 % 获取文件夹中所有 .txt 文件的信息
 filePattern = fullfile(folderPath, '*.txt');
 txtFiles = dir(filePattern);
@@ -65,13 +65,15 @@ hold on;
 scatter(X(1,:),X(3,:),10,"filled",'Color', [230, 90, 13]/255);
 hold off;
 legend('Apogee','Perigee','Location','northwest');
-xlabel('Obital period (minutes)');
+xlabel('Orbital period (minutes)');
 ylabel('Altitude (km)');
 xlim([97 111]);
 ylim([400 1800]);
 
 ax = gca(f1); % 获取 f1 中当前的 Axes 句柄
 set(ax, 'FontSize', 20,'LineWidth',1); % 对 Axes 对象设置 FontSize
+grid(ax, 'on');
+box(ax, 'on');
 
 drawnow;  % 刷新图像
 

@@ -1,2 +1,6 @@
 ﻿simulation/data/
 multi_debris/true_10_year.mat
+data_and_plot/cosmos_1408/tle_history_output/
+data_and_plot/cosmos_1408/tle_snapshot_output/
+data_and_plot/cosmos_2251/tle_history_output/
+data_and_plot/cosmos_2251/tle_snapshot_output/
