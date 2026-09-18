@@ -27,7 +27,7 @@ end
 % T_hist 采用大碎片采样间隔的 1~5 倍。原程序 baseline 中 baoliu=2，
 % 因此 baseline 精确对应 2*ncaiyang*Ts；论文中四舍五入写为 16.8 h。
 T_hist_multiple_values=[1,2,3,4,5];
-eta_values=[0.005,0.01,0.02,0.05,0.10];
+eta_values=[0.01,0.015,0.02,0.03,0.05];
 delta_multiple_values=[1,2,3,4,5];
 dR_values_km=[0.5,1,2,3,5];
 CD_uncertainty_values=[0,0.025,0.05,0.075,0.10];
@@ -141,6 +141,29 @@ z_xiao=2*rand(no_x,1)-1;
 %% ========================= 并行池 =========================
 use_thread_pool=prepare_parallel_pool_sensitivity();
 
+%% ========================= screening-fraction sensitivity =========================
+fprintf('\n---------------- eta_r sensitivity ----------------\n');
+JS_eta=zeros(length(eta_values),ns+1);
+for icase=1:length(eta_values)
+    value=eta_values(icase);
+
+    if(abs(value-eta_baseline)<1e-15)
+        JS_eta(icase,:)=JS_baseline;
+    else
+        [tae_case,k5_case]=run_inference_case(aeda_sm,rcx,vcx,s_mx,...
+            no_x,ts,miu_earth,r0,v0,ncaiyang,Ts,...
+            T_hist_baseline_s,value,delta_multiple_baseline,...
+            CD_uncertainty_baseline,z_da,z_xiao);
+
+        JS_eta(icase,:)=jisuan_JS_from_tae_sensitivity(tae_case,k5_case,...
+            xiao_cankao,Px_cankao,lo_fenbu,hi_fenbu,dR_fenbu,no_x,ns,Ts,use_thread_pool);
+        clear tae_case k5_case;
+    end
+
+    fprintf('eta_r = %6.2f%%: mean JS = %.8f, max JS = %.8f\n',...
+        value*100,mean(JS_eta(icase,:)),max(JS_eta(icase,:)));
+end
+
 %% ========================= radial-bin width sensitivity =========================
 % 为避免对 0.5/1/2/3/5 km 分别重复计算，先在最细的 0.5 km 网格上
 % 重构一次 reference 和 inferred 分布，再将相邻 0.5 km bins 相加得到
@@ -202,28 +225,7 @@ for icase=1:length(T_hist_multiple_values)
         value_h,multiple,plural_s(multiple),mean(JS_Thist(icase,:)),max(JS_Thist(icase,:)));
 end
 
-%% ========================= screening-fraction sensitivity =========================
-fprintf('\n---------------- eta_r sensitivity ----------------\n');
-JS_eta=zeros(length(eta_values),ns+1);
-for icase=1:length(eta_values)
-    value=eta_values(icase);
 
-    if(abs(value-eta_baseline)<1e-15)
-        JS_eta(icase,:)=JS_baseline;
-    else
-        [tae_case,k5_case]=run_inference_case(aeda_sm,rcx,vcx,s_mx,...
-            no_x,ts,miu_earth,r0,v0,ncaiyang,Ts,...
-            T_hist_baseline_s,value,delta_multiple_baseline,...
-            CD_uncertainty_baseline,z_da,z_xiao);
-
-        JS_eta(icase,:)=jisuan_JS_from_tae_sensitivity(tae_case,k5_case,...
-            xiao_cankao,Px_cankao,lo_fenbu,hi_fenbu,dR_fenbu,no_x,ns,Ts,use_thread_pool);
-        clear tae_case k5_case;
-    end
-
-    fprintf('eta_r = %6.2f%%: mean JS = %.8f, max JS = %.8f\n',...
-        value*100,mean(JS_eta(icase,:)),max(JS_eta(icase,:)));
-end
 
 %% ========================= inference-interval sensitivity =========================
 fprintf('\n---------------- delta_t sensitivity ----------------\n');
